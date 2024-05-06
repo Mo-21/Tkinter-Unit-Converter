@@ -10,12 +10,14 @@ answer_label = None
 
 def on_button_click():
     global screen_has_value, answer_label
-    value = int(input_field.get())
-    if value and screen_has_value is False:
-        new_value = value * 1.609344
-        answer_label = Label(text=f"{new_value} km", font=("Ariel", 20, "bold"))
-        answer_label.pack()
-        screen_has_value = True
+    try:
+        value = int(input_field.get())
+        if value and screen_has_value is False:
+            answer_label = Label(text=f"{value}", font=("Arial", 20, "bold"))
+            answer_label.pack()
+            screen_has_value = True
+    except ValueError:
+        print("Please enter a valid integer value.")
 
 
 def clear_screen():
